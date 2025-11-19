@@ -1,0 +1,146 @@
+:root {
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  color-scheme: light dark;
+  --bg: #f5f5f5;
+  --fg: #1f2933;
+  --accent: #2563eb;
+  --accent-dark: #1d4ed8;
+  --panel: #ffffff;
+  --border: #d0d7de;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+.app-shell {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+header > h1 {
+  margin-bottom: 0.25rem;
+}
+
+.voice-panel,
+.list-panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+}
+
+.record-btn {
+  appearance: none;
+  border: none;
+  border-radius: 999px;
+  background: var(--accent);
+  color: white;
+  font-size: 1.2rem;
+  padding: 0.85rem 1.75rem;
+  cursor: pointer;
+  transition: transform 0.1s ease, background 0.2s ease;
+}
+
+.record-btn.recording {
+  background: #dc2626;
+}
+
+.record-btn:hover {
+  transform: translateY(-1px);
+  background: var(--accent-dark);
+}
+
+.status {
+  margin-top: 0.75rem;
+  font-style: italic;
+}
+
+.transcript {
+  margin-top: 1.5rem;
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 1rem;
+  border: 1px dashed #cbd5f5;
+}
+
+.transcript h2 {
+  margin-top: 0;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.link-btn {
+  border: none;
+  background: none;
+  color: var(--accent);
+  text-decoration: underline;
+  cursor: pointer;
+  font: inherit;
+}
+
+.empty-state {
+  padding: 1rem;
+  border-radius: 12px;
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.med-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.medication-item {
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #fff;
+}
+
+.medication-item h3 {
+  margin: 0 0 0.25rem;
+}
+
+.medication-item .meta {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #475569;
+}
+
+.medication-item .note {
+  margin-top: 0.25rem;
+  color: #334155;
+  font-size: 0.95rem;
+}
+
+@media (min-width: 768px) {
+  .app-shell {
+    flex-direction: row;
+  }
+
+  .voice-panel,
+  .list-panel {
+    flex: 1;
+  }
+}
