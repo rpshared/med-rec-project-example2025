@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Voice Medication Wallet Card</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Replit-style voice capture</p>
+          <h1>Medication Wallet Card</h1>
+          <p class="lede">Press record, read your meds aloud, and watch them appear in a card you can take to every appointment.</p>
+        </div>
+        <div class="tag">Made with Web Speech API</div>
+      </header>
+
+      <section class="panel control-panel">
+        <div class="panel__title">Capture a new list</div>
+        <p class="hint">Start and stop recording as you speak each medication. Pauses or the word "and" separate items.</p>
+        <div class="controls">
+          <button id="record-btn" type="button" class="record-btn">🎙️ Start talking</button>
+          <button id="sample-btn" type="button" class="ghost-btn">Load sample meds</button>
+          <button id="clear-btn" type="button" class="ghost-btn">Clear list</button>
+        </div>
+        <p id="status" role="status" aria-live="polite" class="status">Press start to begin listening.</p>
+      </section>
+
+      <section class="panel transcript-panel">
+        <div class="transcript__header">
+          <h2>Live transcript</h2>
+          <span class="pill">streaming</span>
+        </div>
+        <p id="transcript-text">(waiting for speech)</p>
+      </section>
+
+      <section class="panel card-panel">
+        <div class="panel__title">Your pocket drug list</div>
+        <p class="hint">Designed to mimic the simple medication card patients carry between visits.</p>
+        <div class="card">
+          <div class="card__header">
+            <div>
+              <div class="card__label">Patient name</div>
+              <div class="card__value" contenteditable="true" spellcheck="false">Type name...</div>
+            </div>
+            <div>
+              <div class="card__label">Provider / practice</div>
+              <div class="card__value" contenteditable="true" spellcheck="false">Type clinic...</div>
+            </div>
+          </div>
+
+          <div class="card__table">
+            <div class="table__head">
+              <span>#</span>
+              <span>Medication</span>
+              <span>Dosage</span>
+              <span>Directions</span>
+              <span>Notes</span>
+            </div>
+            <div id="list-empty" class="empty-row">Read medications aloud to fill the card.</div>
+            <ol id="med-list" class="table__body" aria-live="polite"></ol>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
