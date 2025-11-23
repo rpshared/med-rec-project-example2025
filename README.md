@@ -1,6 +1,7 @@
 # Voice-driven Medication List
 
 This project is a minimal static web application that lets you speak medication instructions and instantly see a structured list containing the medication name, dosage, instructions, and notes. It is designed so it can be dropped directly into GitHub Pages or any other static host—no custom server is required.
+This project is a minimal deployable web application that lets you speak medication instructions and instantly see a structured list containing the medication name, dosage, instructions, and notes.
 
 ## Features
 - Click-to-talk interface powered by the browser's built-in Web Speech API.
