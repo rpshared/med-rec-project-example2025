@@ -20,27 +20,22 @@ You do **not** need Node, npm, or any backend. There are two easy ways to run th
 ### Option B: Serve the folder (closest to production)
 1. From the project root, run one of these one-liners:
    ```bash
-   # npm-friendly option (uses the built-in Node static server)
-   npm start
-
-   # If you prefer other tools
+   # Node users
    npx serve .
+
+   # Python users
    python -m http.server 8000
    ```
-2. Visit the reported localhost URL (default `http://localhost:3000` when using `npm start`).
+2. Visit the reported localhost URL (e.g., `http://localhost:3000` or `http://localhost:8000`).
 3. Click **🎙️ Click to talk**, allow microphone access, and speak your medication list.
-
-### Option C: Test inside an online IDE (Codespaces/Replit/Codex)
-If you're using a cloud editor, open `index.html` with its built-in preview (or enable a simple static server as above). The
-app is 100% static, so any IDE that lets you preview HTML will run it without extra setup.
 
 ## Quick test run
 If you just want to verify the build works end-to-end:
 
 1. Ensure you are using a Chromium-based browser (Chrome/Edge) with microphone access allowed.
-2. Launch the app with Option A, B, or C above.
-3. For a fast smoke-test, click **Load sample meds** to populate the card. Then click **🎙️ Start talking** and read your own
-   list to confirm the voice flow. Each entry appears under **Medication list** as name, dosage, directions, and optional notes.
+2. Launch the app with Option A or B above.
+3. Read a medication list aloud. Each comma-separated entry will appear under **Medication list** as name, dosage, instructions,
+   and optional notes.
 
 ## Deploying to GitHub Pages
 1. Commit the repository to GitHub.

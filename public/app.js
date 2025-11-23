@@ -40,7 +40,7 @@ if (SpeechRecognition) {
     if (isRecording) {
       recognition.start();
     } else {
-      statusEl.textContent = 'Press start to begin listening.';
+      statusEl.textContent = 'Press the button to start listening.';
       recordBtn.classList.remove('recording');
     }
   };
@@ -58,7 +58,7 @@ recordBtn?.addEventListener('click', () => {
 clearBtn.addEventListener('click', () => {
   medications = [];
   transcriptBuffer = '';
-  transcriptEl.textContent = '(waiting for speech)';
+  transcriptEl.textContent = '(nothing captured yet)';
   renderMedications();
 });
 
@@ -73,8 +73,8 @@ function toggleRecording(shouldRecord) {
   } else {
     recognition.stop();
     recordBtn.classList.remove('recording');
-    recordBtn.textContent = '🎙️ Start talking';
-    statusEl.textContent = 'Press start to begin listening.';
+    recordBtn.textContent = '🎙️ Click to talk';
+    statusEl.textContent = 'Press the button to start listening.';
   }
 }
 
@@ -94,7 +94,7 @@ function parseMedications(text) {
     const segments = entry.split(',').map(s => s.trim()).filter(Boolean);
     const name = segments.shift() || `Medication ${index + 1}`;
     const dosage = segments.shift() || 'Dose not captured';
-    const instructions = segments.shift() || 'No directions provided';
+    const instructions = segments.shift() || 'No instructions provided';
     const note = segments.length ? segments.join(', ') : '—';
 
     return { name, dosage, instructions, note };
@@ -114,15 +114,14 @@ function renderMedications() {
 
   medications.forEach((med, idx) => {
     const li = document.createElement('li');
+    li.className = 'medication-item';
+
     li.innerHTML = `
-      <span class="index">${idx + 1}</span>
-      <span class="name">${med.name}</span>
-      <span class="dosage">${med.dosage}</span>
-      <span class="instructions">${med.instructions}</span>
-      <span class="note">${med.note}</span>
+      <h3>${idx + 1}. ${med.name}</h3>
+      <p class="meta"><strong>Dosage:</strong> ${med.dosage}</p>
+      <p class="meta"><strong>Instructions:</strong> ${med.instructions}</p>
+      <p class="note"><strong>Note:</strong> ${med.note}</p>
     `;
     medList.appendChild(li);
   });
 }
-
-renderMedications();
