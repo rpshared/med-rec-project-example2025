@@ -1,7 +1,6 @@
 # Voice-driven Medication List
 
 This project is a minimal static web application that lets you speak medication instructions and instantly see a structured list containing the medication name, dosage, instructions, and notes. It is designed so it can be dropped directly into GitHub Pages or any other static host—no custom server is required.
-This project is a minimal deployable web application that lets you speak medication instructions and instantly see a structured list containing the medication name, dosage, instructions, and notes.
 
 ## Features
 - Click-to-talk interface powered by the browser's built-in Web Speech API.
@@ -10,13 +9,33 @@ This project is a minimal deployable web application that lets you speak medicat
 - 100% static assets so it runs anywhere (including GitHub Pages) without a backend.
 
 ## Getting started locally
+You do **not** need Node, npm, or any backend. There are two easy ways to run the app:
+
+### Option A: Open the file directly (fastest)
 1. Clone or download the repository.
-2. Open `index.html` in any modern Chromium-based browser (double-clicking the file works), or serve the folder with any static file server such as:
-   ```bash
-   npx serve .
-   ```
-3. Click the **🎙️ Click to talk** button, allow microphone access, and speak your medication list, for example:
+2. Double-click `index.html` to open it in a Chromium-based browser (Chrome/Edge/Brave/Vivaldi).
+3. Click **🎙️ Click to talk**, allow microphone access, and speak your medication list, for example:
    > "Metformin, 500 milligrams, two tablets by mouth twice a day. Lisinopril, 10 milligrams, once by mouth each day."
+
+### Option B: Serve the folder (closest to production)
+1. From the project root, run one of these one-liners:
+   ```bash
+   # Node users
+   npx serve .
+
+   # Python users
+   python -m http.server 8000
+   ```
+2. Visit the reported localhost URL (e.g., `http://localhost:3000` or `http://localhost:8000`).
+3. Click **🎙️ Click to talk**, allow microphone access, and speak your medication list.
+
+## Quick test run
+If you just want to verify the build works end-to-end:
+
+1. Ensure you are using a Chromium-based browser (Chrome/Edge) with microphone access allowed.
+2. Launch the app with Option A or B above.
+3. Read a medication list aloud. Each comma-separated entry will appear under **Medication list** as name, dosage, instructions,
+   and optional notes.
 
 ## Deploying to GitHub Pages
 1. Commit the repository to GitHub.
@@ -24,20 +43,6 @@ This project is a minimal deployable web application that lets you speak medicat
 3. After GitHub finishes building, visit `https://<your-username>.github.io/<repo-name>/` to use the voice-driven medication list.
 
 Any other static hosting solution (Netlify Drop, Cloudflare Pages, S3/CloudFront, etc.) will also work because the site is just `index.html`, `style.css`, and `app.js`.
-- Lightweight Node.js server that can be deployed to any platform supporting `node`.
-
-## Getting started
-1. **Install dependencies** – there are none beyond Node.js itself.
-2. **Run the server**
-   ```bash
-   npm start
-   ```
-3. Open your browser to `http://localhost:3000` and click the **🎙️ Click to talk** button.
-4. Grant microphone permission when prompted and speak your medication list, for example:
-   > "Metformin, 500 milligrams, two tablets by mouth twice a day. Lisinopril, 10 milligrams, once by mouth each day."
-
-## Deployment
-Because the application is a simple Node.js static server, you can deploy it on platforms such as Render, Railway, Heroku, Fly.io, or any container-based service. Make sure the platform sets the `PORT` environment variable – the server automatically respects it.
 
 ## Notes
 - The Web Speech API currently works best in Chromium-based browsers (Chrome, Edge). Safari desktop supports it with prefixes; Firefox does not yet support it.
